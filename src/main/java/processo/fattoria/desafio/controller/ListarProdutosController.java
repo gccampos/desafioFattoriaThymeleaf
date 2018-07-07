@@ -39,11 +39,22 @@ public class ListarProdutosController {
 
     @PostMapping("removerProduto")
     public ModelAndView removerProdutoPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {   
+            throws ServletException, IOException, SQLException {
         String nome = request.getParameter("nome");
         Produto produto = produtoService.buscarPorNome(nome);
         produtoService.deletar(produto);
         return new ModelAndView("redirect:/listarProduto");
     }
- 
+
+    @PostMapping("editarProduto")
+    public ModelAndView editarProdutoPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        
+        
+        
+        
+        
+        
+        return null;
+    }
 }

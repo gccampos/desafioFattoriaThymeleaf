@@ -42,7 +42,13 @@ public class CadastroProdutoController {
         long preco = Long.valueOf(request.getParameter("preco"));
         int quantidade = Integer.valueOf(request.getParameter("quantidade"));
         Calendar dataCadastro = Calendar.getInstance();
-        Produto produto = new Produto(nome, preco, quantidade, dataCadastro);
+        Produto produto;
+        if (produtoService.buscarPorNome(nome) != null) {
+            produto = produtoService.buscarPorNome(nome);
+            produto.setQuantidade(produto.getQuantidade() + quantidade);
+        } else {
+            produto = new Produto(nome, preco, quantidade, dataCadastro);
+        }
         produtoService.salvar(produto);
         ModelAndView modelAndView = new ModelAndView("CadastroProdutoController");
         return modelAndView;

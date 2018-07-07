@@ -5,9 +5,15 @@
  */
 package processo.fattoria.desafio.controller;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import processo.fattoria.desafio.modelo.Produto;
@@ -30,7 +36,14 @@ public class ListarProdutosController {
         modelAndView.addObject("listaProdutos", produtos);
         return modelAndView;
     }
-    
-    
 
+    @PostMapping("removerProduto")
+    public ModelAndView removerProdutoPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {   
+        String nome = request.getParameter("nome");
+        Produto produto = produtoService.buscarPorNome(nome);
+        produtoService.deletar(produto);
+        return new ModelAndView("redirect:/listarProduto");
+    }
+ 
 }

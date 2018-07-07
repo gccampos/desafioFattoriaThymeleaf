@@ -36,8 +36,7 @@ public class CadastroProdutoController {
     }
 
     @PostMapping("/cadastroProduto")
-    public ModelAndView cadastroProduto(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+    public ModelAndView cadastroProduto(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String nome = request.getParameter("nome");
         long preco = Long.valueOf(request.getParameter("preco"));

@@ -20,14 +20,16 @@ import javax.persistence.Id;
 @Entity
 public class Produto implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nome;
     private long preco;
     private int quantidade;
     private Calendar dataCadastro;
+
+    public Produto() {
+    }
 
     public Produto(String nome, long preco, int quantidade, Calendar dataCadastro) {
         this.nome = nome;
@@ -36,7 +38,7 @@ public class Produto implements Serializable {
         this.dataCadastro = dataCadastro;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -56,7 +58,7 @@ public class Produto implements Serializable {
         this.dataCadastro = dataCadastro;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

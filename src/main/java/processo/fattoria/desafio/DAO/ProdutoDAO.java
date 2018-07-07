@@ -17,6 +17,6 @@ import processo.fattoria.desafio.modelo.Produto;
 @Repository
 public interface ProdutoDAO extends JpaRepository<Produto, Integer> {
 
-    @Query("SELECT p FROM Produto where p.nome=?1")
+    @Query("SELECT p FROM Produto p where p.nome=?1")
     public Produto buscarPorNome(String nome);
 }

@@ -19,4 +19,7 @@ public interface ProdutoDAO extends JpaRepository<Produto, Integer> {
 
     @Query("SELECT p FROM Produto p where p.nome=?1")
     public Produto buscarPorNome(String nome);
+    
+    @Query("SELECT p FROM Produto p where p.id=?1")
+    public Produto buscarPorId(Integer id);
 }

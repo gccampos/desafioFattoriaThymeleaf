@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import processo.fattoria.desafio.modelo.Produto;
 import processo.fattoria.desafio.service.ProdutoService;
 
@@ -30,7 +31,6 @@ import processo.fattoria.desafio.service.ProdutoService;
  * @author usuario
  */
 @Controller
-@RequestMapping("/produto")
 public class ProdutoController {
 
     @Autowired
@@ -84,8 +84,8 @@ public class ProdutoController {
         return "redirect:thymeleaf";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/home", method = RequestMethod.GET, produces =  "text/Html")
     public String getHome() {
-        return "home";
+        return "/home";
     }
 }

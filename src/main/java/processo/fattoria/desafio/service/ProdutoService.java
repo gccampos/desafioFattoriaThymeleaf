@@ -5,8 +5,9 @@
  */
 package processo.fattoria.desafio.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import processo.fattoria.desafio.DAO.ProdutoDAO;
 import processo.fattoria.desafio.modelo.Produto;
@@ -25,8 +26,8 @@ public class ProdutoService {
         return produtoDAO.buscarPorNome(nome);
     }
 
-    public List<Produto> buscarTodos() {
-        return produtoDAO.findAll();
+    public Page<Produto> buscarTodos(Pageable pgbl) {
+        return produtoDAO.findAll(pgbl);
     }
 
     public Produto buscarPorId(Integer id) {

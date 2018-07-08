@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div th:fragment="content">
+            <h1>Lista de Produtos Cadastrados</h1>
+            <a href="add.html" th:href="@{/user/form}">
+                Adicionar produto
+            </a>
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome : </th>
+                        <th>Preço: </th>
+                        <th>Quantidade</th>
+                        <th>Data de Cadastro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p : ${produtoList}">
+                        <td th:text="${p.nome}">Nome</td>
+                        <td th:text="${p.preco}">Preço</td>
+                        <td th:text="${p.quantidade}">Quantidade</td>
+                        <td th:text="${p.dataCadastro}">Data de Cadastro</td>
+                        <td>
+                            <a href="form.html" th:href="@{/produto/form(id=${p.id})}">
+                                Editar
+                            </a>
+                            <a href="view.html" th:href="@{/produto/deletarProduto(id=${p.id})}">
+                                Deletar
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <form>
+
+            </form>
+        </div>
+    </body>
+</html>

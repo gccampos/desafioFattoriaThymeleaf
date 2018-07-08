@@ -29,15 +29,18 @@ public class ProdutoService {
         return produtoDAO.findAll();
     }
 
-//    public Produto buscarPorId(Integer id) {
-//        return (Produto) produtoDAO.findOne(id);
-//    }
+    public Produto buscarPorId(Integer id) {
+        return  produtoDAO.buscarPorId(id);
+    }
 
     public void salvar(Produto p) {
         produtoDAO.save(p);
 
     }
-    public void deletar(Produto p){
+    public void deletarPorObjeto(Produto p){
         produtoDAO.delete(p);
+    }
+    public void deletarPorId(Integer id){
+        produtoDAO.deleteById(id);
     }
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Adicionar e editar produtos</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div th:fragment="content">
+            <h1>Adicionar ou Editar</h1>
+            <form action="#" th:action="@{/produto/form}" th:object="${produto}" 
+                  method="post" >
+                <table border="1">
+                    <tbody>
+                        <tr>
+                            <td>Nome</td>
+                            <td><input type="text" th:field="*{nome}" /></td>
+                            <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error Message</td>
+                        </tr>
+                        <tr>
+                            <td>Preço</td>
+                            <td><input type="text" th:field="*{preco}" /></td>
+                            <td th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}">Pesan Error</td>
+                        </tr>
+                        <tr>
+                            <td>Quantidade</td>
+                            <td><input type="text" th:field="*{quantidade}" /></td>
+                            <td th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Pesan Error</td>
+                        </tr>                      
+                            <td>&nbsp;</td>
+                            <td><input type="submit" value="Submit" /></td>
+                            <td><input type="hidden" th:field="*{produtoId}"  /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

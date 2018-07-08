@@ -7,11 +7,14 @@ package processo.fattoria.desafio.modelo;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -23,9 +26,21 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column(nullable = false, length = 255)
+    @NotNull
     private String nome;
+    
+    @Column(nullable = false, length = 255)
+    @NotNull
     private long preco;
+    
+    @NotNull
     private int quantidade;
+    
+    @Column(nullable = false)
+    @NotNull
+    @Temporal(TemporalType.DATE)
     private Calendar dataCadastro;
 
     public Produto() {
